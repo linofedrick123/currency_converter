@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class Main {
+    private static final double USD_TO_EUR_RATE = 0.93; 
+    private static final double EUR_TO_USD_RATE = 1 / USD_TO_EUR_RATE;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Currency Converter");
+        System.out.println("1. Convert USD to EUR");
+        System.out.println("2. Convert EUR to USD");
+        System.out.print("Choose an option (1/2): ");
+        int option = scanner.nextInt();
+        if (option == 1) {
+            System.out.print("Enter amount in USD: ");
+            double amountInUSD = scanner.nextDouble();
+            double amountInEUR = convertUSDtoEUR(amountInUSD);
+            System.out.printf("%.2f USD is equal to %.2f EUR%n", amountInUSD, amountInEUR);
+        } else if (option == 2) {
+            System.out.print("Enter amount in EUR: ");
+            double amountInEUR = scanner.nextDouble();
+            double amountInUSD = convertEURtoUSD(amountInEUR);
+            System.out.printf("%.2f EUR is equal to %.2f USD%n", amountInEUR, amountInUSD);
+        } else {
+            System.out.println("Invalid option. Please select 1 or 2.");
+        }
+        scanner.close();
+    }
+    private static double convertUSDtoEUR(double usd) {
+        return usd * USD_TO_EUR_RATE;
+    }
+    private static double convertEURtoUSD(double eur) {
+        return eur * EUR_TO_USD_RATE;
+    }
+}
+v
